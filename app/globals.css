@@ -1,0 +1,183 @@
+/* ============================================================
+   LDV SPEED ACCELERATOR — GLOBAL DESIGN SYSTEM
+   app/globals.css
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   1. FONT IMPORT
+   Barlow Condensed for the big display headline,
+   Barlow for all body / nav copy.
+   ---------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+/* ----------------------------------------------------------
+   2. LDV COLOR TOKENS
+   ---------------------------------------------------------- */
+:root {
+   /* — LDV Gray scale — */
+   --ldv-gray-900: #1a1a1a;
+   --ldv-gray-800: #2d2d2d;
+   --ldv-gray-700: #404040;
+   --ldv-gray-600: #555555;
+   --ldv-gray-500: #6e6e6e;
+   --ldv-gray-400: #8c8c8c;
+   --ldv-gray-300: #adadad;
+   --ldv-gray-200: #cecece;
+   --ldv-gray-100: #e8e8e8;
+   --ldv-gray-50: #f5f5f5;
+
+   /* — LDV Orange scale (dark crimson → dusty rose) — */
+   --ldv-orange-900: #2a0a05;
+   --ldv-orange-800: #4d1206;
+   --ldv-orange-700: #7a1c08;
+   --ldv-orange-600: #a3250c;
+   --ldv-orange-500: #c43214;
+   --ldv-orange-400: #d4543a;
+   --ldv-orange-300: #e08070;
+   --ldv-orange-200: #edaaa0;
+   --ldv-orange-100: #f5cfc9;
+   --ldv-orange-50: #fceeed;
+
+   /* — Semantic aliases — */
+   --color-accent: var(--ldv-orange-500);
+   --color-accent-light: var(--ldv-orange-400);
+   --color-text-inverse: #ffffff;
+
+   /* ----------------------------------------------------------
+     3. TYPOGRAPHY TOKENS  (from spec image)
+     ---------------------------------------------------------- */
+
+   /* H1 — Semi Bold | 80px | line 58 */
+   --font-size-h1: 80px;
+   --line-height-h1: 1.05;
+   /* tight for display; spec line=58 on 80px ≈ 0.725 — we use relative for flexibility */
+   --font-weight-h1: 600;
+
+   /* H2 — Semi Bold | 64px | line 48 */
+   --font-size-h2: 64px;
+   --line-height-h2: 1.1;
+   --font-weight-h2: 600;
+
+   /* H3 — Semi Bold | 48px | line 38 */
+   --font-size-h3: 48px;
+   --line-height-h3: 1.15;
+   --font-weight-h3: 600;
+
+   /* H4 — Semi Bold | 32px | line 34 */
+   --font-size-h4: 32px;
+   --line-height-h4: 34px;
+   --font-weight-h4: 600;
+
+   /* H5 — Semi Bold | 24px | line 28 */
+   --font-size-h5: 24px;
+   --line-height-h5: 28px;
+   --font-weight-h5: 600;
+
+   /* S1 Subtitle — Semi Bold | 18px | line 28 */
+   --font-size-s1: 18px;
+   --line-height-s1: 28px;
+   --font-weight-s1: 600;
+
+   /* S2 Subtitle — Semi Bold | 16px | line 24 */
+   --font-size-s2: 16px;
+   --line-height-s2: 24px;
+   --font-weight-s2: 600;
+
+   /* B1 Body — Regular | 16px | line 24 */
+   --font-size-b1: 16px;
+   --line-height-b1: 24px;
+   --font-weight-b1: 400;
+
+   /* B2 Body — Medium | 16px | line 24 */
+   --font-size-b2: 16px;
+   --line-height-b2: 24px;
+   --font-weight-b2: 500;
+
+   /* B3 Body — Regular | 14px | line 20 */
+   --font-size-b3: 14px;
+   --line-height-b3: 20px;
+   --font-weight-b3: 400;
+
+   /* B4 Body — Medium | 14px | line 20 */
+   --font-size-b4: 14px;
+   --line-height-b4: 20px;
+   --font-weight-b4: 500;
+
+   /* C1 Caption — Regular | 12px | line 16 */
+   --font-size-c1: 12px;
+   --line-height-c1: 16px;
+   --font-weight-c1: 400;
+
+   /* C2 Caption — Medium | 12px | line 16 */
+   --font-size-c2: 12px;
+   --line-height-c2: 16px;
+   --font-weight-c2: 500;
+
+   /* C3 Caption — Medium | 10px | line 14 */
+   --font-size-c3: 10px;
+   --line-height-c3: 14px;
+   --font-weight-c3: 500;
+
+   /* LABEL — Medium | 12px | line 16 */
+   --font-size-label: 12px;
+   --line-height-label: 16px;
+   --font-weight-label: 500;
+
+   /* ----------------------------------------------------------
+     4. BUTTON FONT TOKENS
+     ---------------------------------------------------------- */
+   --btn-size-giant: 18px;
+   --btn-line-giant: 24px;
+   --btn-size-large: 16px;
+   --btn-line-large: 20px;
+   --btn-size-medium: 14px;
+   --btn-line-medium: 16px;
+   --btn-size-small: 12px;
+   --btn-line-small: 16px;
+   --btn-size-tiny: 10px;
+   --btn-line-tiny: 12px;
+
+   /* ----------------------------------------------------------
+     5. EASING & MISC
+     ---------------------------------------------------------- */
+   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* ----------------------------------------------------------
+   6. RESET
+   ---------------------------------------------------------- */
+*,
+*::before,
+*::after {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+}
+
+html {
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+   scroll-behavior: smooth;
+}
+
+body {
+   font-family: 'Inter', sans-serif;
+   font-size: var(--font-size-b1);
+   font-weight: var(--font-weight-b1);
+   line-height: var(--line-height-b1);
+   background-color: var(--ldv-gray-900);
+   color: var(--color-text-inverse);
+   overflow-x: hidden;
+}
+
+img,
+video {
+   display: block;
+   max-width: 100%;
+}
+
+a {
+   color: inherit;
+   text-decoration: none;
+}

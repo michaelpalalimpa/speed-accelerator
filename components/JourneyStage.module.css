@@ -1,0 +1,372 @@
+/* ============================================================
+   JOURNEY STAGE SECTION
+   12-column grid · 1440px design width
+   Outer margin = 80px each side (per reference screenshot)
+   Col width = (1440 - 160 - 11×24) / 12 ≈ 98px
+   Col+gutter = 122px
+   n cols     = n×98 + (n-1)×24
+   8 cols     ≈ 952px
+   6 cols     ≈ 706px
+   12 cols    ≈ 1280px
+   ============================================================ */
+
+.section {
+  background-color: var(--ldv-orange-500);
+  width: 100%;
+  /* 80px side margins baked into padding so content never touches edges */
+  padding: 160px 80px 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* 382px gap between persona intro and each stage block */
+  gap: 382px;
+  box-sizing: border-box;
+}
+
+.stageBlock {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 120px;
+}
+
+/* ----------------------------------------------------------
+   GRID ROOT — 12 cols, all blocks share this width
+   ---------------------------------------------------------- */
+.grid {
+  width: 100%;
+  max-width: 1280px;
+  /* 12 cols */
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 24px;
+}
+
+/* ----------------------------------------------------------
+   1. INTRO — 8 cols, centred (col 3–10)
+   ---------------------------------------------------------- */
+.intro {
+  width: 100%;
+  max-width: 1280px;
+  margin-top: 222px;
+  /* section padding 160px + 222px = 382px from top edge */
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 24px;
+}
+
+.introInner {
+  grid-column: 3 / 11;
+  /* 8 cols centred */
+  text-align: center;
+}
+
+.introText {
+  font-family: 'Outfit', sans-serif;
+  font-size: var(--font-size-h2);
+  font-weight: 400;
+  line-height: var(--line-height-h2);
+  color: var(--ldv-orange-50);
+  margin: 0;
+}
+
+.introText strong {
+  font-weight: 700;
+}
+
+/* ----------------------------------------------------------
+   2. STAGE DETAILS — 8 cols centred (col 3–10)
+   ---------------------------------------------------------- */
+.stageDetail {
+  width: 100%;
+  max-width: 1280px;
+
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 24px;
+}
+
+.stageInner {
+  grid-column: 3 / 11;
+  /* 8 cols */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+}
+
+.stageCaption {
+  font-family: 'Outfit', sans-serif;
+  font-size: var(--font-size-h5);
+  font-weight: var(--font-weight-h5);
+  line-height: var(--line-height-h5);
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0;
+}
+
+.stageBody {
+  font-family: 'Outfit', sans-serif;
+  font-size: var(--font-size-h4);
+  font-weight: 400;
+  line-height: var(--line-height-h4);
+  color: rgba(255, 255, 255, 0.90);
+  margin: 0;
+}
+
+.stageBody strong {
+  font-weight: 700;
+  color: var(--ldv-orange-50);
+}
+
+/* ----------------------------------------------------------
+   3. DATA SPLIT — full 12 cols: friction = 6, metrics = 6
+   ---------------------------------------------------------- */
+.dataSplit {
+  width: 100%;
+  max-width: 1280px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 24px;
+  align-items: start;
+}
+
+/* Left — Friction: cols 1–6 */
+.frictionCol {
+  grid-column: 1 / 7;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.frictionLabel {
+  font-family: 'Outfit', sans-serif;
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-h4);
+  line-height: var(--line-height-h4);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.70);
+  margin: 0;
+}
+
+.frictionHeadline {
+  font-family: 'Outfit', sans-serif;
+  font-size: var(--font-size-h2);
+  font-weight: 700;
+  line-height: var(--line-height-h2);
+  color: var(--ldv-orange-50);
+  margin: 0;
+}
+
+/* Right — Metrics + Quote: cols 7–12 */
+.metricsCol {
+  grid-column: 7 / 13;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.metrics {
+  display: flex;
+  flex-direction: row;
+  gap: 48px;
+  align-items: flex-end;
+}
+
+.metricItem {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.metricLabel {
+  font-family: 'Outfit', sans-serif;
+  font-size: var(--font-size-b3);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.70);
+  white-space: nowrap;
+}
+
+.metricValue {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  line-height: 1;
+}
+
+.metricNum {
+  font-family: 'Outfit', sans-serif;
+  font-size: 96px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--ldv-orange-50);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+}
+
+.metricDenom {
+  font-family: 'Outfit', sans-serif;
+  font-size: var(--font-size-h4);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.60);
+  padding-bottom: 18px;
+}
+
+.quote {
+  font-family: 'Outfit', sans-serif;
+  font-size: var(--font-size-h3);
+  font-weight: 400;
+  line-height: var(--line-height-h3);
+  color: var(--ldv-orange-50);
+  margin: 0;
+}
+
+/* ----------------------------------------------------------
+   4. SOLUTION — image 6 cols centred, text below
+   ---------------------------------------------------------- */
+.solution {
+  width: 100%;
+  max-width: 1280px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 24px;
+}
+
+.solutionInner {
+  grid-column: 3 / 11;
+  /* 8 cols centred — bigger image */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0;
+}
+
+.videoWrapper {
+  position: relative;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  /* Fade bottom edge into the section bg */
+  -webkit-mask-image: linear-gradient(to bottom,
+      black 0%,
+      black 55%,
+      transparent 100%);
+  mask-image: linear-gradient(to bottom,
+      black 0%,
+      black 55%,
+      transparent 100%);
+}
+
+.videoMockup {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.solutionText_block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: -48px;
+  /* overlaps the faded bottom of the image */
+  position: relative;
+  z-index: 1;
+}
+
+.solutionLabel {
+  font-family: 'Outfit', sans-serif;
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-h4);
+  line-height: var(--line-height-h4);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.70);
+  margin: 0;
+}
+
+.solutionText {
+  font-family: 'Outfit', sans-serif;
+  font-size: var(--font-size-h2);
+  font-weight: 400;
+  line-height: var(--line-height-h2);
+  color: var(--ldv-orange-50);
+  margin: 0;
+}
+
+.solutionText strong {
+  font-weight: 700;
+}
+
+/* ----------------------------------------------------------
+   RESPONSIVE
+   ---------------------------------------------------------- */
+@media (max-width: 1100px) {
+  .section {
+    padding: 120px 48px 140px;
+  }
+
+  .introInner,
+  .stageInner {
+    grid-column: 2 / 12;
+  }
+
+  .solutionInner {
+    grid-column: 3 / 11;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 80px 24px 100px;
+    gap: 80px;
+  }
+
+  .introInner,
+  .stageInner {
+    grid-column: 1 / 13;
+  }
+
+  .frictionCol {
+    grid-column: 1 / 13;
+  }
+
+  .metricsCol {
+    grid-column: 1 / 13;
+  }
+
+  .solutionInner {
+    grid-column: 1 / 13;
+  }
+
+  .introText,
+  .frictionHeadline,
+  .solutionText {
+    font-size: var(--font-size-h3);
+  }
+
+  .stageBody,
+  .frictionLabel,
+  .metricLabel,
+  .solutionLabel {
+    font-size: var(--font-size-h5);
+  }
+
+  .metricNum {
+    font-size: var(--font-size-h2);
+  }
+
+  .quote {
+    font-size: var(--font-size-h4);
+  }
+}

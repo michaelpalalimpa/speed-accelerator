@@ -1,0 +1,359 @@
+/* ============================================================
+   PERSONAS SECTION
+   components/Personas.module.css
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   SECTION WRAPPER
+   ---------------------------------------------------------- */
+.personas {
+  position: relative;
+  width: 100%;
+  background-color: var(--ldv-orange-900);
+  /* overflow visible so peeking card edges are visible */
+  overflow: visible;
+}
+
+/* ----------------------------------------------------------
+   HEADER
+   ---------------------------------------------------------- */
+.header {
+  width: 96%;
+  max-width: 1720px;
+  margin: 0 auto;
+  padding: 96px 0 72px;
+  text-align: left;
+}
+
+.headerEyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--font-size-c2);
+  font-weight: var(--font-weight-c2);
+  line-height: var(--line-height-c2);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ldv-orange-300);
+  margin-bottom: 16px;
+}
+
+.headerTitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-h1);
+  line-height: var(--line-height-h1);
+  margin-bottom: 20px;
+
+  /* ldv-gray-50 → ldv-orange-400, left to right */
+  background: linear-gradient(to right,
+      var(--ldv-gray-50) 0%,
+      var(--ldv-orange-400) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.headerSubtext {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--font-size-b1);
+  font-weight: var(--font-weight-b1);
+  line-height: var(--line-height-b1);
+  color: var(--ldv-orange-200);
+  max-width: 560px;
+}
+
+/* ----------------------------------------------------------
+   PIN WRAPPER — full viewport width, this is what GSAP pins.
+   Transparent background so the section bg shows through
+   around the narrower card.
+   ---------------------------------------------------------- */
+.pinTrack {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* transparent — .personas section bg shows through on the sides */
+  background-color: transparent;
+  padding: 32px 0;
+}
+
+/* ----------------------------------------------------------
+   CATEGORY BLOCK — the visible "card", narrower than viewport.
+   The gap on each side reveals the pinTrack / section bg,
+   creating the stacked-card peek-behind effect.
+   ---------------------------------------------------------- */
+.categoryBlock {
+  position: relative;
+  min-height: calc(100vh - 64px);
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  overflow: hidden;
+  /* single clean shadow — no top inset that causes the strip artifact */
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.50);
+}
+
+/* z-index + progressive width shrink per stacking layer */
+.themeLight {
+  background-color: var(--ldv-orange-50);
+  z-index: 1;
+  width: 96%;
+  max-width: 1720px;
+}
+
+.themeMid {
+  background-color: var(--ldv-orange-500);
+  z-index: 2;
+  width: 90%;
+  max-width: 1560px;
+}
+
+.themeDark {
+  background-color: var(--ldv-orange-800);
+  z-index: 3;
+  width: 84%;
+  max-width: 1400px;
+}
+
+.categoryInner {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 64px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+/* Category title */
+.categoryTitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-h3);
+  line-height: var(--line-height-h3);
+  letter-spacing: -0.01em;
+  text-align: center;
+  width: 100%;
+}
+
+.themeLight .categoryTitle {
+  color: var(--ldv-gray-900);
+}
+
+.themeMid .categoryTitle,
+.themeDark .categoryTitle {
+  color: #ffffff;
+}
+
+/* ----------------------------------------------------------
+   CARD GRID — 3-column, full width of the category block
+   ---------------------------------------------------------- */
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+/* ----------------------------------------------------------
+   3D FLIP CARD — Pure CSS
+   ---------------------------------------------------------- */
+.cardScene {
+  perspective: 1000px;
+  width: 100%;
+  height: 460px;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.25, 1, 0.5, 1);
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.cardScene:hover .card {
+  transform: rotateY(180deg);
+}
+
+.cardFront,
+.cardBack {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
+}
+
+/* ----------------------------------------------------------
+   CARD FRONT
+   ---------------------------------------------------------- */
+.cardFront {
+  background-color: var(--ldv-gray-800);
+}
+
+.cardImageWrapper {
+  position: absolute;
+  inset: 0;
+}
+
+.cardImage {
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* ldv-orange-700 (#7a1c08): transparent 0% → solid 100% */
+.cardFrontOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 24px;
+  background: linear-gradient(to bottom,
+      rgba(122, 28, 8, 0) 0%,
+      rgba(122, 28, 8, 1) 100%);
+}
+
+.cardHoverHint {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--font-size-c3);
+  font-weight: var(--font-weight-c2);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(252, 238, 237, 0.50);
+  margin-bottom: 8px;
+}
+
+.cardName {
+  font-family: 'Outfit', sans-serif;
+  font-size: var(--font-size-h5);
+  font-weight: var(--font-weight-h5);
+  line-height: var(--line-height-h5);
+  color: var(--ldv-orange-50);
+  margin-bottom: 8px;
+}
+
+.cardQuote {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--font-size-b3);
+  font-weight: var(--font-weight-b3);
+  line-height: var(--line-height-b3);
+  color: var(--ldv-orange-100);
+  font-style: italic;
+}
+
+/* ----------------------------------------------------------
+   CARD BACK — ldv-orange-700 across all categories
+   ---------------------------------------------------------- */
+.cardBack {
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+  background-color: var(--ldv-orange-700);
+}
+
+.cardBackLight,
+.cardBackMid,
+.cardBackDark {
+  background-color: var(--ldv-orange-700);
+}
+
+.cardBackInner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cardBackName {
+  font-family: 'Outfit', sans-serif;
+  font-size: var(--font-size-h5);
+  font-weight: var(--font-weight-h5);
+  line-height: var(--line-height-h5);
+  color: var(--ldv-orange-50);
+}
+
+.cardBackDivider {
+  width: 40px;
+  height: 2px;
+  border-radius: 2px;
+  margin-bottom: 4px;
+  background-color: rgba(252, 238, 237, 0.30);
+}
+
+.cardBackRow {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cardBackLabel {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--font-size-c3);
+  font-weight: var(--font-weight-c2);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(252, 238, 237, 0.50);
+}
+
+.cardBackValue {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--font-size-b3);
+  font-weight: var(--font-weight-b3);
+  line-height: var(--line-height-b3);
+  color: var(--ldv-orange-50);
+}
+
+/* ----------------------------------------------------------
+   RESPONSIVE
+   ---------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .categoryBlock {
+    width: 88%;
+  }
+
+  .categoryInner {
+    padding: 48px 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 64px 24px 48px;
+  }
+
+  .headerTitle {
+    font-size: var(--font-size-h3);
+  }
+
+  .categoryBlock {
+    width: 98%;
+    min-height: auto;
+    border-radius: 14px;
+  }
+
+  .pinTrack {
+    min-height: auto;
+    padding: 20px 0;
+  }
+
+  .cardGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .cardScene {
+    height: 400px;
+  }
+
+  .categoryInner {
+    padding: 40px 20px;
+  }
+}

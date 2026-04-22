@@ -1,0 +1,42 @@
+/* ============================================================
+   FOOTER
+   components/Footer.module.css
+   ============================================================ */
+
+.footer {
+  width: 100%;
+  background-color: var(--ldv-orange-900);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 40px 24px;
+}
+
+.line1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: var(--font-size-h5);
+  font-weight: 600;
+  line-height: var(--line-height-h5);
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--ldv-orange-50);
+  margin: 0;
+  text-align: center;
+  will-change: transform, opacity;
+}
+
+.line2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: var(--font-size-h5);
+  font-weight: 400;
+  line-height: var(--line-height-h5);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ldv-orange-50);
+  margin: 0;
+  text-align: center;
+  opacity: 0.60;
+  will-change: transform, opacity;
+}

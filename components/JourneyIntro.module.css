@@ -1,0 +1,287 @@
+/* ============================================================
+   JOURNEY INTRO SECTION
+   components/JourneyIntro.module.css
+   ============================================================ */
+
+.journeyIntro {
+  position: relative;
+  width: 100%;
+  min-height: 120vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(to bottom,
+      #2a0a05 0%,
+      #2a0a05 35%,
+      #40100a 50%,
+      #641808 63%,
+      #922210 76%,
+      #b82d12 88%,
+      #c43214 100%);
+
+  padding: 320px 0 320px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* ----------------------------------------------------------
+   FLOAT LAYER
+   ---------------------------------------------------------- */
+.floatLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.floatItem {
+  position: absolute;
+  will-change: transform;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 16px 56px rgba(0, 0, 0, 0.50);
+  cursor: grab;
+  pointer-events: all;
+  user-select: none;
+}
+
+.floatItem:active {
+  cursor: grabbing;
+}
+
+.floatImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* ----------------------------------------------------------
+   FLOAT POSITIONS
+   Strategy: every image is anchored to either the TOP or
+   BOTTOM edge of the section with px values — never relative
+   to the vertical centre. The text block sits in the flex
+   centre. As long as images are short enough that their
+   bottom/top edges don't reach the centre, they can't overlap.
+
+   Sizes are deliberately all different — no two share the
+   same width or aspect ratio.
+   ---------------------------------------------------------- */
+
+/* ── TOP ROW ── anchored from top edge ── */
+
+/* Upper-left — wide portrait, large, far left, strong CCW tilt */
+.floatMidLeft {
+  width: 17vw;
+  max-width: 265px;
+  min-width: 140px;
+  aspect-ratio: 3 / 4;
+  top: 40px;
+  left: 16%;
+  transform: rotate(-4deg);
+}
+
+/* Top-centre — tallest & narrowest, centred, slight CW */
+.floatTopCenter {
+  width: 14vw;
+  max-width: 220px;
+  min-width: 120px;
+  aspect-ratio: 9 / 16;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%) rotate(2.5deg);
+}
+
+/* Upper-right — shortest top card, pushed far right, strong CW */
+.floatMidRight {
+  width: 13vw;
+  max-width: 200px;
+  min-width: 105px;
+  aspect-ratio: 2 / 3;
+  top: 48px;
+  right: 16%;
+  transform: rotate(5deg);
+}
+
+/* ── BOTTOM ROW ── anchored from bottom edge ── */
+
+/* Lower-left — widest card, extra tall, slight CW */
+.floatBottomLeft {
+  width: 16vw;
+  max-width: 295px;
+  min-width: 150px;
+  aspect-ratio: 2 / 3;
+  bottom: 36px;
+  left: 15%;
+  transform: rotate(2deg);
+}
+
+/* Bottom-centre — medium, narrow, centred, slight CCW */
+.floatBottomCenter {
+  width: 13vw;
+  max-width: 200px;
+  min-width: 105px;
+  aspect-ratio: 2 / 3;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+}
+
+/* Lower-right — second widest, square-ish portrait, strong CCW */
+.floatBottomRight {
+  width: 18vw;
+  max-width: 280px;
+  min-width: 140px;
+  aspect-ratio: 4 / 5;
+  bottom: 32px;
+  right: 15%;
+  transform: rotate(-3.5deg);
+}
+
+/* ----------------------------------------------------------
+   CENTRAL TEXT BLOCK
+   Pure flex centre — no top/bottom positioning so it always
+   sits exactly in the middle regardless of min-height value.
+   z-index 1 keeps it above the float layer.
+   ---------------------------------------------------------- */
+.textBlock {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  width: 40%;
+  max-width: 780px;
+  min-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 16px;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+.headline {
+  font-family: 'Outfit', sans-serif;
+  /* clamp keeps it on one line at wide viewports but never overflows */
+  font-size: clamp(28px, 4.2vw, 80px);
+  font-weight: var(--font-weight-h1);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  white-space: nowrap;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.body {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--font-size-b1);
+  font-weight: var(--font-weight-b1);
+  line-height: 1.75;
+  color: rgba(252, 238, 237, 0.70);
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* ----------------------------------------------------------
+   RESPONSIVE
+   ---------------------------------------------------------- */
+@media (max-width: 1280px) {
+  .floatMidLeft {
+    width: 15vw;
+  }
+
+  .floatTopCenter {
+    width: 13vw;
+  }
+
+  .floatMidRight {
+    width: 11vw;
+  }
+
+  .floatBottomLeft {
+    width: 20vw;
+  }
+
+  .floatBottomCenter {
+    width: 12vw;
+  }
+
+  .floatBottomRight {
+    width: 16vw;
+  }
+
+  .textBlock {
+    width: 44%;
+  }
+
+  .headline {
+    font-size: clamp(48px, 5.5vw, 80px);
+    white-space: normal;
+  }
+}
+
+@media (max-width: 1024px) {
+  .textBlock {
+    width: 52%;
+  }
+
+  .floatMidLeft {
+    width: 17vw;
+  }
+
+  .floatTopCenter {
+    width: 15vw;
+  }
+
+  .floatMidRight {
+    width: 13vw;
+  }
+
+  .floatBottomLeft {
+    width: 14vw;
+  }
+
+  .floatBottomCenter {
+    width: 14vw;
+  }
+
+  .floatBottomRight {
+    width: 18vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .journeyIntro {
+    padding: 180px 0 160px;
+  }
+
+  .floatMidLeft,
+  .floatMidRight,
+  .floatBottomLeft,
+  .floatBottomRight {
+    display: none;
+  }
+
+  .floatTopCenter {
+    width: 36vw;
+  }
+
+  .floatBottomCenter {
+    width: 30vw;
+  }
+
+  .textBlock {
+    width: 80%;
+    min-width: 0;
+  }
+
+  .headline {
+    font-size: var(--font-size-h2);
+    white-space: normal;
+  }
+}

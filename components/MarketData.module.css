@@ -1,0 +1,572 @@
+/* ============================================================
+   MARKET DATA SECTION
+   components/MarketData.module.css
+   ============================================================ */
+
+.section {
+  background-color: var(--ldv-orange-50);
+  width: 100%;
+  padding: 120px 24px 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 120px;
+  box-sizing: border-box;
+}
+
+/* ----------------------------------------------------------
+   SHARED
+   ---------------------------------------------------------- */
+.sectionTitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: var(--font-size-h2);
+  font-weight: 400;
+  line-height: var(--line-height-h2);
+  color: var(--ldv-orange-700);
+  text-align: center;
+  margin: 0 0 48px;
+}
+
+/* ----------------------------------------------------------
+   1. HEADER
+   ---------------------------------------------------------- */
+.header {
+  width: 100%;
+  max-width: 1280px;
+  display: grid;
+  grid-template-columns: 4fr 8fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.headerTitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(56px, 6vw, 96px);
+  font-weight: 700;
+  line-height: 0.95;
+  color: var(--ldv-orange-800);
+  margin: 0;
+  white-space: nowrap;
+}
+
+.headerSub {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--font-size-b3);
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--ldv-orange-800);
+  max-width: 360px;
+  margin: 0;
+}
+
+.headerCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+/* Stat card */
+.statCard {
+  background-color: var(--ldv-orange-500);
+  border-radius: 12px;
+  padding: 28px 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  text-align: right;
+}
+
+/* Green growth badge */
+.statBadgeRow {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.statBadge {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: var(--font-size-c3);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #1a4731;
+  background-color: #4ade80;
+  border-radius: 20px;
+  padding: 3px 10px;
+}
+
+/* Inline comparison row: 2023 [old]  2026 [new big] */
+.statCompareLine {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 6px;
+  flex-wrap: nowrap;
+}
+
+/* "2023" small year label */
+.statOldYear {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--font-size-b1);
+  font-weight: 400;
+  color: var(--ldv-orange-700);
+}
+
+/* Old number — strikethrough */
+.statOldNum {
+  font-family: 'Outfit', sans-serif;
+  font-size: var(--font-size-h4);
+  font-weight: 600;
+  color: var(--ldv-orange-700);
+  text-decoration: line-through;
+  text-decoration-color: var(--ldv-orange-600);
+}
+
+/* "2026" small year label */
+.statNewYear {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--font-size-b1);
+  font-weight: 400;
+  color: var(--ldv-orange-200);
+  margin-left: 4px;
+}
+
+/* Big 2026 number */
+.statBig {
+  display: flex;
+  align-items: baseline;
+  gap: 1px;
+}
+
+.statNum {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(40px, 4vw, 64px);
+  font-weight: 700;
+  color: var(--ldv-orange-50);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.statSlash {
+  font-family: 'Outfit', sans-serif;
+  font-size: var(--font-size-h3);
+  font-weight: 700;
+  color: var(--ldv-orange-50);
+}
+
+.statLabel {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--font-size-c2);
+  font-weight: 500;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--ldv-orange-200);
+  margin: 0;
+  line-height: 1.4;
+  text-align: right;
+}
+
+/* ----------------------------------------------------------
+   2. MOMENTUM CHART
+   ---------------------------------------------------------- */
+.momentumSection {
+  width: 100%;
+  max-width: 1280px;
+  display: flex;
+  flex-direction: column;
+  padding: 120px 0 160px;
+}
+
+.momentumYears {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 32px;
+}
+
+.yearLabel2023 {
+  font-family: 'Outfit', sans-serif;
+  font-size: var(--font-size-h2);
+  font-weight: 700;
+  color: var(--ldv-gray-500);
+  width: 50%;
+  text-align: right;
+  padding-right: 24px;
+}
+
+.yearDivider {
+  width: 2px;
+  height: 40px;
+  background-color: var(--ldv-gray-300);
+  flex-shrink: 0;
+}
+
+.yearLabel2026 {
+  font-family: 'Outfit', sans-serif;
+  font-size: var(--font-size-h2);
+  font-weight: 700;
+  color: var(--ldv-orange-500);
+  width: 50%;
+  text-align: left;
+  padding-left: 24px;
+}
+
+/* Each row — single joined bar track */
+.momentumRow {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+/* Full-width track split into two equal halves by the axis */
+.barTrack {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  height: 64px;
+}
+
+/* Left half — grey bar is right-aligned so it touches the axis */
+.barHalfLeft {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+/* Right half — orange bar is left-aligned so it starts at the axis */
+.barHalfRight {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.momentumAxis {
+  width: 2px;
+  background-color: var(--ldv-orange-300);
+  flex-shrink: 0;
+  align-self: stretch;
+}
+
+.barLeft {
+  height: 100%;
+  background-color: var(--ldv-gray-500);
+  border-radius: 6px 0 0 6px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 14px;
+  min-width: 48px;
+  /* overflow hidden on parent clips the animation cleanly */
+}
+
+.barRight {
+  height: 100%;
+  background-color: var(--ldv-orange-500);
+  border-radius: 0 6px 6px 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 14px;
+  min-width: 48px;
+}
+
+.barLabel {
+  font-family: 'Outfit', sans-serif;
+  font-size: var(--font-size-h4);
+  font-weight: 700;
+  color: var(--ldv-gray-200);
+  white-space: nowrap;
+}
+
+.barLabelRight {
+  color: var(--ldv-orange-50);
+}
+
+.momentumLabel {
+  text-align: center;
+  font-family: 'Outfit', sans-serif;
+  font-size: var(--font-size-h5);
+  font-weight: 600;
+  color: var(--ldv-orange-700);
+  margin: 0;
+}
+
+/* ----------------------------------------------------------
+   3. RESEARCH TIME
+   ---------------------------------------------------------- */
+.researchSection {
+  width: 100%;
+  max-width: 1280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Full-width stacked bar */
+.stackedBarTrack {
+  width: 100%;
+  height: 72px;
+  display: flex;
+  flex-direction: row;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.stackedSegment {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.stackedPct {
+  font-family: 'Outfit', sans-serif;
+  font-size: var(--font-size-h3);
+  font-weight: 700;
+  line-height: 1;
+  /* color set inline per segment for readability */
+  white-space: nowrap;
+}
+
+/* Legend */
+.legend {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 0 28px;
+  margin-bottom: 40px;
+  width: 100%;
+  overflow: visible;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legendDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legendLabel {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--font-size-b1);
+  font-weight: var(--font-weight-b1);
+  color: var(--ldv-orange-800);
+}
+
+/* Research text cards */
+.researchCards {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+  width: 100%;
+}
+
+.researchCard {
+  grid-column: span 3;
+  border-radius: 12px;
+  padding: 24px 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.researchTag {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--font-size-c3);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  /* color set per-card via inline style */
+  background-color: var(--ldv-orange-50);
+  border-radius: 20px;
+  padding: 4px 12px;
+  align-self: flex-start;
+}
+
+.researchBody {
+  font-family: 'Outfit', sans-serif;
+  font-size: var(--font-size-h4);
+  font-weight: 400;
+  line-height: 1.35;
+  /* color set per-card via inline style */
+  margin: 0;
+}
+
+/* ----------------------------------------------------------
+   4. INVESTMENT ALLOCATION
+   ---------------------------------------------------------- */
+.investSection {
+  width: 100%;
+  max-width: 1280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.investSub {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--font-size-c1);
+  color: var(--ldv-gray-500);
+  margin: -36px 0 40px;
+  text-align: center;
+}
+
+.investCards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  width: 100%;
+}
+
+.investCard {
+  border-radius: 12px;
+  padding: 32px 28px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  will-change: transform, opacity;
+}
+
+.investLabel {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--font-size-c1);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ldv-orange-100);
+}
+
+.investNum {
+  font-family: 'Outfit', sans-serif;
+  font-size: var(--font-size-h2);
+  font-weight: 600;
+  color: var(--ldv-orange-50);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.investSub2 {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--font-size-b3);
+  color: var(--ldv-orange-200);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ----------------------------------------------------------
+   5. FOOTER QUOTE
+   ---------------------------------------------------------- */
+.footerQuote {
+  width: 100%;
+  max-width: 1100px;
+  text-align: center;
+  margin-top: 120px;
+  padding: 0 0 80px;
+}
+
+.quoteText {
+  font-family: 'Outfit', sans-serif;
+  font-size: var(--font-size-h2);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--ldv-orange-500);
+  margin: 0;
+}
+
+/* Each word is wrapped in a span for the typewriter stagger */
+.quoteWord {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  margin-right: 0.22em;
+}
+
+.quoteWordInner {
+  display: inline-block;
+  font-weight: 600;
+  /* GSAP animates translateY from 100% to 0 */
+  will-change: transform;
+}
+
+/* Bold sentence override */
+.quoteWordBold {
+  font-weight: 700;
+}
+
+.quoteText strong {
+  font-weight: 700;
+  color: var(--ldv-orange-700);
+}
+
+/* ----------------------------------------------------------
+   RESPONSIVE
+   ---------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .section {
+    padding: 80px 40px 120px;
+  }
+
+  .header {
+    grid-template-columns: 1fr;
+  }
+
+  .headerCards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .investCards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .researchCards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 60px 20px 80px;
+    gap: 80px;
+  }
+
+  .headerCards {
+    grid-template-columns: 1fr;
+  }
+
+  .investCards {
+    grid-template-columns: 1fr;
+  }
+
+  .researchCards {
+    grid-template-columns: 1fr;
+  }
+
+  .sectionTitle {
+    font-size: var(--font-size-h3);
+  }
+
+  .quoteText {
+    font-size: var(--font-size-h4);
+  }
+}

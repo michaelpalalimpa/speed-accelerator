@@ -1,0 +1,316 @@
+/* ============================================================
+   LDV SPEED ACCELERATOR — HERO PAGE
+   app/page.module.css
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   HERO SECTION — Root container
+   ---------------------------------------------------------- */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* Clip child transforms at the boundary */
+  isolation: isolate;
+}
+
+/* ----------------------------------------------------------
+   BACKGROUND LAYER
+   ---------------------------------------------------------- */
+.bgWrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  /* GSAP will animate scale on this element */
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.bgImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+/* Warm dark gradient overlay — ensures white text readability */
+.bgOverlay {
+  position: absolute;
+  inset: 0;
+  background:
+    /* top vignette — nav area */
+    linear-gradient(to bottom,
+      rgba(15, 6, 2, 0.72) 0%,
+      rgba(15, 6, 2, 0.10) 22%,
+      transparent 40%),
+    /* bottom vignette — vehicle base */
+    linear-gradient(to top,
+      rgba(10, 4, 1, 0.85) 0%,
+      rgba(10, 4, 1, 0.40) 30%,
+      transparent 55%),
+    /* LDV-orange-900 banner gradient: starts at 50%, ends at 100% */
+    linear-gradient(to bottom,
+      transparent 50%,
+      #2a0a05 100%),
+    /* center warm wash to unify the golden bg */
+    radial-gradient(ellipse 80% 60% at 50% 55%,
+      rgba(160, 60, 10, 0.12) 0%,
+      transparent 70%);
+  z-index: 1;
+}
+
+/* ----------------------------------------------------------
+   NAVIGATION
+   ---------------------------------------------------------- */
+.nav {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1280px;
+  padding: 28px 48px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+
+  /* GSAP initial state applied inline; transform handled there */
+  will-change: transform, opacity;
+}
+
+.navGroup {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  flex: 1;
+}
+
+.navGroup:last-child {
+  justify-content: flex-start;
+}
+
+.navGroup:first-child {
+  justify-content: flex-end;
+}
+
+.navLink {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--font-size-c1);
+  font-weight: var(--font-weight-c2);
+  line-height: var(--line-height-c1);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.80);
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+
+.navLink:hover {
+  color: #ffffff;
+}
+
+.navLogo {
+  flex: 0 0 auto;
+  width: 120px;
+  margin: 0 48px;
+}
+
+.navLogoImage {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ----------------------------------------------------------
+   HERO TEXT BLOCK — centered vertically in the remaining space
+   ---------------------------------------------------------- */
+.textBlock {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 24px;
+  /* sits above vehicles layer */
+  pointer-events: none;
+  /* nudge upward slightly to account for vehicle PNG height */
+  margin-bottom: 340px;
+}
+
+.subtitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: var(--font-size-h5);
+  font-weight: 600;
+  line-height: var(--line-height-h5);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 12px;
+
+  will-change: transform, opacity;
+}
+
+/* GSAP animates this wrapper — never the gradient element directly */
+.headlineWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  will-change: transform, opacity;
+}
+
+.headline {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(64px, 9vw, 128px);
+  font-weight: 600;
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+
+  /* LDV-orange-50 at 75% opacity, top → bottom */
+  background: linear-gradient(to bottom,
+      rgba(252, 238, 237, 100) 0%,
+      rgba(252, 238, 237, 0) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+
+  /* NO will-change or opacity here — breaks background-clip: text */
+}
+
+/* Line 2 inherits the same gradient */
+.headlineLine2 {
+  font-size: clamp(72px, 10.5vw, 148px);
+}
+
+/* ----------------------------------------------------------
+   FOREGROUND VEHICLES
+   ---------------------------------------------------------- */
+.fgWrapper {
+  position: absolute;
+  bottom: -26%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  width: 130%;
+  max-width: 1800px;
+  pointer-events: none;
+
+  will-change: transform, opacity;
+}
+
+.fgImage {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: bottom center;
+  display: block;
+}
+
+/* ----------------------------------------------------------
+   SCROLL INDICATOR
+   ---------------------------------------------------------- */
+.scrollIndicator {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+
+  font-family: 'Inter', sans-serif;
+  font-size: var(--font-size-c1);
+  font-weight: var(--font-weight-c2);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+
+  will-change: opacity;
+}
+
+/* Animated chevron */
+.scrollChevron {
+  width: 14px;
+  height: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: scrollBounce 1.6s var(--ease-out-expo) infinite;
+}
+
+.scrollChevron svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes scrollBounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.55;
+  }
+
+  50% {
+    transform: translateY(4px);
+    opacity: 0.90;
+  }
+}
+
+/* ----------------------------------------------------------
+   RESPONSIVE ADJUSTMENTS
+   ---------------------------------------------------------- */
+@media (max-width: 768px) {
+  .nav {
+    padding: 20px 24px 0;
+  }
+
+  .navGroup {
+    gap: 24px;
+  }
+
+  .navLogo {
+    width: 80px;
+    margin: 0 24px;
+  }
+
+  .textBlock {
+    margin-bottom: 240px;
+  }
+
+  .fgWrapper {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .navGroup {
+    gap: 16px;
+  }
+
+  .navLink {
+    font-size: 10px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+    letter-spacing: 0.10em;
+  }
+}
