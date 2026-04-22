@@ -110,7 +110,7 @@ const CATEGORIES = [
       {
         id: "van-2",
         name: "Community Support Provider",
-        image: "/assets/VAN-community-support-provider.png",
+        image: "/assets/VAN-Community-support-provider.png",
         quote: "'I need reliable, accessible transport that fits tight funding margins so I can provide dignified care without downtime.'",
         trigger: "A new client with heavier mobility equipment or aging vehicle reliability issues.",
         barrier: "Tight budgets from funding constraints and strict accessibility requirements.",
@@ -120,7 +120,7 @@ const CATEGORIES = [
       {
         id: "van-3",
         name: "Pop-Up Entrepreneur",
-        image: "/assets/VAN-pop-up-entrepreneur.png",
+        image: "/assets/VAN-Pop-up-entrepreneur.png",
         quote: "'I am setting up shop dozens of times a year; I need a vehicle that reduces my physical fatigue and scales with my business.'",
         trigger: "Invitations to more market events or a quiet mid-week slot becoming recurring.",
         barrier: "Highly variable cash flow and setup/pack-down times affecting profit.",
